@@ -1,10 +1,12 @@
-function TextItem(_x, _y, _text) : Item(_x, _y) constructor {
-	text = string(_text)
-	
-	width = string_width(text)
-	height = string_height(text)
+function TextItem(_x, _y, _value) : Item(_x, _y) constructor {
+	value = _value
 	
 	static draw = function (_x, _y) {
-		draw_text(_x + x, _y + y, text)
+		var _str = string(value)
+		var _w = window.width - x
+		
+		width = string_width_ext(_str, -1, _w)
+		height = string_height_ext(_str, -1, _w)
+		draw_text_ext(_x + x, _y + y, _str, -1, _w)
 	}
 }
