@@ -1,5 +1,7 @@
-if window != undefined {
-	window.tick()
+var _window = global.window
+
+if _window != undefined {
+	_window.tick()
 } else {
 	if mouse_check_button_pressed(mb_middle) {
 		drag_x = window_mouse_get_x()
@@ -37,8 +39,11 @@ if window_width != _ww or window_height != _wh {
 	window_height = _wh
 	camera_set_view_size(camera, _ww * zoom, _wh * zoom)
 	
-	if window != undefined {
-		with window {
+	// Clamp current window position to screen
+	_window = global.window
+	
+	if _window != undefined {
+		with _window {
 			x = clamp(x, 0, _ww - width)
 			y = clamp(y, 0, _wh - height)
 		}

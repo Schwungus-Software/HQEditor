@@ -31,6 +31,7 @@
     {"id":{"name":"TextItem","path":"scripts/TextItem/TextItem.yy",},},
     {"id":{"name":"NoDataWindow","path":"scripts/NoDataWindow/NoDataWindow.yy",},},
     {"id":{"name":"PolygonDef","path":"scripts/PolygonDef/PolygonDef.yy",},},
+    {"id":{"name":"config_save","path":"scripts/config_save/config_save.yy",},},
     {"id":{"name":"Def","path":"scripts/Def/Def.yy",},},
     {"id":{"name":"Item","path":"scripts/Item/Item.yy",},},
     {"id":{"name":"hqe_display","path":"scripts/hqe_display/hqe_display.yy",},},
