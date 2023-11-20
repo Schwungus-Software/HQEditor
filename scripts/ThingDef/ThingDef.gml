@@ -1,0 +1,1 @@
+function ThingDef() : Def() constructor {}

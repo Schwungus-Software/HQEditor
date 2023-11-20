@@ -1,0 +1,1 @@
+function PolygonDef() : Def() constructor {}

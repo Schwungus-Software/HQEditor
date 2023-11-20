@@ -1,0 +1,3 @@
+application_surface_enable(false)
+application_surface_draw_enable(false)
+surface_free(application_surface)

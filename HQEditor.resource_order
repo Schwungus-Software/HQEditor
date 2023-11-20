@@ -1,0 +1,20 @@
+{
+  "FolderOrderSettings": [
+    {"name":"Objects","order":9,"path":"folders/Objects.yy",},
+    {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
+    {"name":"Scripts","order":5,"path":"folders/Scripts.yy",},
+    {"name":"Defs","order":2,"path":"folders/Scripts/Defs.yy",},
+    {"name":"Items","order":3,"path":"folders/Scripts/Items.yy",},
+    {"name":"Windows","order":1,"path":"folders/Scripts/Windows.yy",},
+    {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
+  ],
+  "ResourceOrderSettings": [
+    {"name":"PropDef","order":3,"path":"scripts/PropDef/PropDef.yy",},
+    {"name":"TextItem","order":1,"path":"scripts/TextItem/TextItem.yy",},
+    {"name":"NoDataWindow","order":2,"path":"scripts/NoDataWindow/NoDataWindow.yy",},
+    {"name":"PolygonDef","order":1,"path":"scripts/PolygonDef/PolygonDef.yy",},
+    {"name":"ButtonItem","order":2,"path":"scripts/ButtonItem/ButtonItem.yy",},
+    {"name":"ThingDef","order":2,"path":"scripts/ThingDef/ThingDef.yy",},
+    {"name":"TitleWindow","order":1,"path":"scripts/TitleWindow/TitleWindow.yy",},
+  ],
+}

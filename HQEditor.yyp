@@ -1,0 +1,50 @@
+{
+  "resourceType": "GMProject",
+  "resourceVersion": "1.7",
+  "name": "HQEditor",
+  "AudioGroups": [
+    {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
+  ],
+  "configs": {
+    "children": [],
+    "name": "Default",
+  },
+  "defaultScriptType": 1,
+  "Folders": [
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Objects.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Scripts","folderPath":"folders/Scripts.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Defs","folderPath":"folders/Scripts/Defs.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Items","folderPath":"folders/Scripts/Items.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Windows","folderPath":"folders/Scripts/Windows.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Shaders","folderPath":"folders/Shaders.yy",},
+  ],
+  "IncludedFiles": [],
+  "isEcma": false,
+  "LibraryEmitters": [],
+  "MetaData": {
+    "IDEVersion": "2023.8.2.108",
+  },
+  "resources": [
+    {"id":{"name":"Window","path":"scripts/Window/Window.yy",},},
+    {"id":{"name":"PropDef","path":"scripts/PropDef/PropDef.yy",},},
+    {"id":{"name":"TextItem","path":"scripts/TextItem/TextItem.yy",},},
+    {"id":{"name":"NoDataWindow","path":"scripts/NoDataWindow/NoDataWindow.yy",},},
+    {"id":{"name":"PolygonDef","path":"scripts/PolygonDef/PolygonDef.yy",},},
+    {"id":{"name":"Def","path":"scripts/Def/Def.yy",},},
+    {"id":{"name":"Item","path":"scripts/Item/Item.yy",},},
+    {"id":{"name":"hqe_display","path":"scripts/hqe_display/hqe_display.yy",},},
+    {"id":{"name":"ButtonItem","path":"scripts/ButtonItem/ButtonItem.yy",},},
+    {"id":{"name":"objControl","path":"objects/objControl/objControl.yy",},},
+    {"id":{"name":"ThingDef","path":"scripts/ThingDef/ThingDef.yy",},},
+    {"id":{"name":"TitleWindow","path":"scripts/TitleWindow/TitleWindow.yy",},},
+    {"id":{"name":"rmMain","path":"rooms/rmMain/rmMain.yy",},},
+  ],
+  "RoomOrderNodes": [
+    {"roomId":{"name":"rmMain","path":"rooms/rmMain/rmMain.yy",},},
+  ],
+  "templateType": "game",
+  "TextureGroups": [
+    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
+  ],
+}

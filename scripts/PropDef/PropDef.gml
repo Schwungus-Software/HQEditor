@@ -1,0 +1,1 @@
+function PropDef() : Def() constructor {}
