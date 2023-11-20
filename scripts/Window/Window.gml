@@ -10,6 +10,10 @@ function Window(_x, _y) constructor {
 	items = []
 	popup = true
 	
+	static handle_close = function () {
+		return true
+	}
+	
 	static add_item = function (_item) {
 		_item.window = self
 		
@@ -17,22 +21,38 @@ function Window(_x, _y) constructor {
 	}
 	
 	static link_window = function (_window) {
-		if child != undefined {
-			child.close()
+		if child != undefined and not child.close() {
+			return false
 		}
 		
 		_window.parent = self
 		child = _window
+		
+		return true
 	}
 	
 	static close = function () {
 		if child != undefined {
-			child.close()
+			if child.close() {
+				child = undefined
+			} else {
+				return false
+			}
+		}
+		
+		if not handle_close() {
+			return false
+		}
+		
+		if parent != undefined and parent.child == self {
+			parent.child = undefined
 		}
 		
 		if global.window == self {
 			global.window = undefined
 		}
+		
+		return true
 	}
 	
 	static tick = function () {
