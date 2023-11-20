@@ -40,6 +40,7 @@ defs = []
 
 #region Windows
 global.window = _start_window
+global.item_focus = undefined
 #endregion
 
 #region Editor

@@ -30,7 +30,7 @@ function Window(_x, _y) constructor {
 			child.close()
 		}
 		
-		if global.window == other {
+		if global.window == self {
 			global.window = undefined
 		}
 	}
@@ -56,6 +56,7 @@ function Window(_x, _y) constructor {
 					var _y1 = y + _y
 					
 					if point_in_rectangle(_mx, _my, _x1, _y1, _x1 + width, _y1 + height) and on_click != undefined {
+						global.item_focus = self
 						on_click()
 					}
 				}
