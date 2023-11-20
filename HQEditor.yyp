@@ -36,6 +36,7 @@
     {"id":{"name":"Item","path":"scripts/Item/Item.yy",},},
     {"id":{"name":"hqe_display","path":"scripts/hqe_display/hqe_display.yy",},},
     {"id":{"name":"ButtonItem","path":"scripts/ButtonItem/ButtonItem.yy",},},
+    {"id":{"name":"InputItem","path":"scripts/InputItem/InputItem.yy",},},
     {"id":{"name":"objControl","path":"objects/objControl/objControl.yy",},},
     {"id":{"name":"ThingDef","path":"scripts/ThingDef/ThingDef.yy",},},
     {"id":{"name":"TitleWindow","path":"scripts/TitleWindow/TitleWindow.yy",},},

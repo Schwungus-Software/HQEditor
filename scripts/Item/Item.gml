@@ -9,5 +9,7 @@ function Item(_x, _y) constructor {
 	
 	static on_click = function () {}
 	
-	static draw = function () {}
+	static tick = function () {}
+	
+	static draw = function (_x, _y) {}
 }

@@ -2,6 +2,12 @@ var _window = global.window
 
 if _window != undefined {
 	_window.tick()
+	
+	var _item_focus = global.item_focus
+	
+	if _item_focus != undefined {
+		_item_focus.tick()
+	}
 } else {
 	if mouse_check_button_pressed(mb_middle) {
 		drag_x = window_mouse_get_x()

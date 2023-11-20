@@ -1,20 +1,18 @@
 function NoDataWindow(_x, _y) : Window(_x, _y) constructor {
-	width = 480
-	height = 240
+	width = 400
+	height = 96
 	popup = false
 	
-	add_item(new TextItem(16, 16, $"HQEngine data directory not found!\nYour current directory is '{global.config.data_directory}'"))
+	add_item(new TextItem(16, 16, $"HQEngine data directory not found!\nYour current directory:"))
 	
-	add_item(new ButtonItem(16, 208, "Change Directory", function () {
-		var _config = global.config
-		var _new = get_string("Enter", _config.data_directory)
-		
-		_config.data_directory = _new
+	add_item(new InputItem(16, 64, 256, 16, global.config.data_directory, function (_value) {
+		global.config.data_directory = _value
 		config_save()
-		close()
 		
-		if not directory_exists(_new) {
-			global.window = new NoDataWindow(16, 16)
+		if directory_exists(_value) {
+			close()
 		}
+		
+		return true
 	}))
 }

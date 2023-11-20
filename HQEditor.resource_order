@@ -15,6 +15,7 @@
     {"name":"PolygonDef","order":1,"path":"scripts/PolygonDef/PolygonDef.yy",},
     {"name":"config_save","order":4,"path":"scripts/config_save/config_save.yy",},
     {"name":"ButtonItem","order":2,"path":"scripts/ButtonItem/ButtonItem.yy",},
+    {"name":"InputItem","order":3,"path":"scripts/InputItem/InputItem.yy",},
     {"name":"ThingDef","order":2,"path":"scripts/ThingDef/ThingDef.yy",},
     {"name":"TitleWindow","order":1,"path":"scripts/TitleWindow/TitleWindow.yy",},
   ],

@@ -52,6 +52,12 @@ function Window(_x, _y) constructor {
 			global.window = undefined
 		}
 		
+		var _item_focus = global.item_focus
+		
+		if _item_focus != undefined and _item_focus.window == self {
+			global.item_focus = undefined
+		}
+		
 		return true
 	}
 	
@@ -75,9 +81,9 @@ function Window(_x, _y) constructor {
 					var _x1 = x + _x
 					var _y1 = y + _y
 					
-					if point_in_rectangle(_mx, _my, _x1, _y1, _x1 + width, _y1 + height) and on_click != undefined {
-						global.item_focus = self
+					if point_in_rectangle(_mx, _my, _x1, _y1, _x1 + width, _y1 + height) {
 						on_click()
+						global.item_focus = self
 					}
 				}
 			}
