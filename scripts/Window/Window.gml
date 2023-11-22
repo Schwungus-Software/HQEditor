@@ -86,8 +86,6 @@ function Window(_x, _y) constructor {
 			if point_in_rectangle(_mx, _my, _x, _y, _x + width, _y + height) {
 				clicked = true
 			} else {
-				clicked = false
-				
 				if popup and not get_clicked() {
 					close()
 					
@@ -103,6 +101,7 @@ function Window(_x, _y) constructor {
 					var _y1 = y + _y
 					
 					if point_in_rectangle(_mx, _my, _x1, _y1, _x1 + width, _y1 + height) {
+						other.clicked = true
 						on_click()
 						global.item_focus = self
 					}
