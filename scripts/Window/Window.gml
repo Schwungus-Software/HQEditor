@@ -1,6 +1,6 @@
 function Window(_x, _y) constructor {
-	x = clamp(_x, 0, window_get_width() * 0.9)
-	y = clamp(_y, 0, window_get_height() * 0.9)
+	x = _x
+	y = _y
 	
 	width = 128
 	height = 128
@@ -9,6 +9,8 @@ function Window(_x, _y) constructor {
 	parent = undefined
 	items = []
 	popup = true
+	
+	clicked = false
 	
 	static handle_close = function () {
 		return true
@@ -61,17 +63,36 @@ function Window(_x, _y) constructor {
 		return true
 	}
 	
-	static tick = function () {
+	static get_clicked = function () {
+		if clicked {
+			return true
+		}
+		
+		return child != undefined and child.child != undefined ? child.get_clicked() : false
+	}
+	
+	static tick = function (_x = 0, _y = 0) {
+		_x += x
+		_y += y
+		
+		if child != undefined {
+			child.tick(_x, _y)
+		}
+		
 		if mouse_check_button_pressed(mb_left) {
 			var _mx = window_mouse_get_x()
 			var _my = window_mouse_get_y()
-			var _x = x
-			var _y = y
 			
-			if popup and not point_in_rectangle(_mx, _my, _x, _y, _x + width, _y + height) {
-				close()
+			if point_in_rectangle(_mx, _my, _x, _y, _x + width, _y + height) {
+				clicked = true
+			} else {
+				clicked = false
 				
-				exit
+				if popup and not get_clicked() {
+					close()
+					
+					exit
+				}
 			}
 			
 			var i = 0
@@ -87,10 +108,8 @@ function Window(_x, _y) constructor {
 					}
 				}
 			}
-		}
-		
-		if child != undefined {
-			child.tick()
+		} else {
+			clicked = false
 		}
 	}
 	

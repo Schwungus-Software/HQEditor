@@ -39,10 +39,12 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 			content: _content,
 			window: _window,
 		}, function () {
-			window.close()
-			
 			if is_instanceof(content, Group) {
-				global.window = new GroupWindow(x, y, content)
+				with window {
+					link_window(new GroupWindow(width, 0, other.content))
+				}
+			} else {
+				window.close()
 			}
 		})))
 		
