@@ -1,6 +1,6 @@
 #region Mods
 var _config = {
-	data_directory: "",
+	data_directory: undefined,
 }
 
 if file_exists("config.json") {
