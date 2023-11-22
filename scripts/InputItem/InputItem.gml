@@ -68,4 +68,8 @@ function InputItem(_x, _y, _width, _height, _value, _callback) : Item(_x, _y) co
 		draw_rectangle_color(_x1, _y1, _x1 + width, _y1 + height, c_black, c_black, c_black, c_black, false)
 		draw_text_ext_color(_x1, _y1, _str, -1, _w, _color, _color, _color, _color, 1)
 	}
+
+	static indicators = function (_str) {
+		return _str + "\n[Enter] Confirm Input\n[Escape] Cancel Input"
+	}
 }

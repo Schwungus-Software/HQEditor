@@ -17,6 +17,7 @@
     {"name":"mod_find_file","order":2,"path":"scripts/mod_find_file/mod_find_file.yy",},
     {"name":"MaterialMap","order":2,"path":"scripts/MaterialMap/MaterialMap.yy",},
     {"name":"PropDef","order":3,"path":"scripts/PropDef/PropDef.yy",},
+    {"name":"ImageItem","order":4,"path":"scripts/ImageItem/ImageItem.yy",},
     {"name":"GroupWindow","order":5,"path":"scripts/GroupWindow/GroupWindow.yy",},
     {"name":"mod_find_folder","order":3,"path":"scripts/mod_find_folder/mod_find_folder.yy",},
     {"name":"TextItem","order":1,"path":"scripts/TextItem/TextItem.yy",},

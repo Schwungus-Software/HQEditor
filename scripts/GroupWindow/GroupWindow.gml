@@ -16,15 +16,19 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 	repeat array_length(_contents) {
 		var _content = _contents[i++]
 		var _name, _prefix
+		var _image = -1
 		
 		if is_instanceof(_content, Group) {
 			_prefix = ">"
 		} else if is_instanceof(_content, ThingDef) {
-			_prefix = "[T] "
+			_image = _content.image
+			_prefix = is_instanceof(_image, Image) ? "  " : "[T] "
 		} else if is_instanceof(_content, PropDef) {
-			_prefix = "[PR] "
+			_image = _content.material.image
+			_prefix = is_instanceof(_image, Image) ? "  " : "[PR] "
 		} else if is_instanceof(_content, PolygonDef) {
-			_prefix = "[PG] "
+			_image = _content.material.image
+			_prefix = is_instanceof(_image, Image) ? "  " : "[PG] "
 		}
 		
 		_name = _prefix + _content.name
@@ -42,6 +46,7 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 			}
 		})))
 		
+		add_item(new ImageItem(8, _yy, _image, 16, 16))
 		_yy += 20
 		width = max(width, string_width(_name) + 16)
 		height = max(height, _yy + 8)

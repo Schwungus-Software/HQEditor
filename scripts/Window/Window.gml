@@ -110,4 +110,8 @@ function Window(_x, _y) constructor {
 			child.draw(_x, _y)
 		}
 	}
+
+	static indicators = function (_str) {
+		return _str + "\n[RMB] Move Window"
+	}
 }

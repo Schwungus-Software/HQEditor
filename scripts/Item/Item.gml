@@ -12,4 +12,8 @@ function Item(_x, _y) constructor {
 	static tick = function () {}
 	
 	static draw = function (_x, _y) {}
+	
+	static indicators = function (_str) {
+		return _str
+	}
 }

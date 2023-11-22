@@ -36,6 +36,7 @@
     {"id":{"name":"Window","path":"scripts/Window/Window.yy",},},
     {"id":{"name":"MaterialMap","path":"scripts/MaterialMap/MaterialMap.yy",},},
     {"id":{"name":"PropDef","path":"scripts/PropDef/PropDef.yy",},},
+    {"id":{"name":"ImageItem","path":"scripts/ImageItem/ImageItem.yy",},},
     {"id":{"name":"GroupWindow","path":"scripts/GroupWindow/GroupWindow.yy",},},
     {"id":{"name":"mod_find_folder","path":"scripts/mod_find_folder/mod_find_folder.yy",},},
     {"id":{"name":"TextItem","path":"scripts/TextItem/TextItem.yy",},},
