@@ -27,20 +27,13 @@ global.config = _config
 var _start_window
 
 if directory_exists(_config.data_directory) {
-	// Load everything!!!
+	reload_assets()
 	_start_window = new TitleWindow(16, 16)
 } else {
 	_start_window = new NoDataWindow(16, 16)
 }
-#endregion
 
-#region Defs
-defs = []
-#endregion
-
-#region Windows
 global.window = _start_window
-global.item_focus = undefined
 #endregion
 
 #region Editor

@@ -1,7 +1,14 @@
 var _window = global.window
 
 if _window != undefined {
-	_window.tick()
+	with _window {
+		if mouse_check_button(mb_right) {
+			x = clamp(window_mouse_get_x(), 0, window_get_width() - width)
+			y = clamp(window_mouse_get_y(), 0, window_get_height() - height)
+		}
+		
+		_window.tick()
+	}
 	
 	var _item_focus = global.item_focus
 	
@@ -34,6 +41,10 @@ if _window != undefined {
 	
 		zoom = clamp(zoom + _inc, 0.1, 10)
 		camera_set_view_size(camera, window_width * zoom, window_height * zoom)
+	}
+	
+	if keyboard_check_pressed(vk_space) {
+		global.window = new GroupWindow(window_mouse_get_x(), window_mouse_get_y(), global.root_group)
 	}
 }
 

@@ -1,1 +1,4 @@
-function PolygonDef() : Def() constructor {}
+function PolygonDef() : Def() constructor {
+	material = undefined
+	z = 50
+}

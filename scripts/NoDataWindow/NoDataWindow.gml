@@ -10,6 +10,7 @@ function NoDataWindow(_x, _y) : Window(_x, _y) constructor {
 		config_save()
 		
 		if directory_exists(_value) {
+			reload_assets()
 			close()
 		}
 		

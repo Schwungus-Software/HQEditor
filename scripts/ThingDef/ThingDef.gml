@@ -1,1 +1,4 @@
-function ThingDef() : Def() constructor {}
+function ThingDef() : Def() constructor {
+	type = ""
+	image = undefined
+}

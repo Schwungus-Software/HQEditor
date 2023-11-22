@@ -1,6 +1,6 @@
 function Window(_x, _y) constructor {
-	x = _x
-	y = _y
+	x = clamp(_x, 0, window_get_width() * 0.9)
+	y = clamp(_y, 0, window_get_height() * 0.9)
 	
 	width = 128
 	height = 128
