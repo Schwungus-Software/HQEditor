@@ -49,7 +49,7 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 		})))
 		
 		add_item(new ImageItem(8, _yy, _image, 16, 16))
-		_yy += 20
+		_yy += 22
 		width = max(width, string_width(_name) + 16)
 		height = max(height, _yy + 8)
 	}
