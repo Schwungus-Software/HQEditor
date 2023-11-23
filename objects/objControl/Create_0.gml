@@ -38,9 +38,10 @@ global.window = _start_window
 
 #region Editor
 global.current_def = undefined
-global.selected = undefined
-grid_size = 16
+global.highlighted = undefined
+global.selected = []
 
+global.grid_size = 16
 cursor_x = 0
 cursor_y = 0
 

@@ -45,6 +45,7 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 				}
 			} else {
 				global.current_def = content
+				global.grid_size = content.grid_size
 				window.close()
 			}
 		})))

@@ -16,6 +16,12 @@ if _window != undefined {
 		_item_focus.tick()
 	}
 } else {
+	if keyboard_check_pressed(ord("C")) {
+		zoom = 1
+		camera_set_view_pos(camera, 0, 0)
+		camera_set_view_size(camera, window_width, window_height)
+	}
+	
 	if mouse_check_button_pressed(mb_middle) {
 		drag_x = window_mouse_get_x()
 		drag_y = window_mouse_get_y()
@@ -37,14 +43,28 @@ if _window != undefined {
 	var _zoom = mouse_wheel_down() - mouse_wheel_up()
 
 	if _zoom != 0 {
-		var _inc = zoom >= 1 ? _zoom * 0.25 : _zoom * 0.1
+		var _inc = zoom >= 1 ? _zoom * 0.2 : _zoom * 0.1
 	
 		zoom = clamp(zoom + _inc, 0.1, 10)
 		camera_set_view_size(camera, window_width * zoom, window_height * zoom)
 	}
 	
-	cursor_x = round(mouse_x / grid_size) * grid_size
-	cursor_y = round(mouse_y / grid_size) * grid_size
+	var _px = cursor_x
+	var _py = cursor_y
+	
+	if keyboard_check(vk_shift) {
+		cursor_x = mouse_x
+		cursor_y = mouse_y
+	} else {
+		var _grid_size = global.grid_size
+		
+		cursor_x = round(mouse_x / _grid_size) * _grid_size
+		cursor_y = round(mouse_y / _grid_size) * _grid_size
+	}
+	
+	if _px != cursor_x or _py != cursor_y {
+		// Highlight marker under cursor
+	}
 	
 	if keyboard_check_pressed(vk_space) {
 		global.window = new GroupWindow(window_mouse_get_x(), window_mouse_get_y(), global.root_group)
