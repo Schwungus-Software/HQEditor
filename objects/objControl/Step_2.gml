@@ -16,6 +16,10 @@ if _window != undefined {
 		_item_focus.tick()
 	}
 } else {
+	if keyboard_check_pressed(ord("G")) {
+		show_grid = not show_grid
+	}
+	
 	if keyboard_check_pressed(ord("C")) {
 		zoom = 1
 		camera_set_view_pos(camera, 0, 0)

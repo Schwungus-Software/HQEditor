@@ -41,6 +41,7 @@ global.current_def = undefined
 global.highlighted = undefined
 global.selected = []
 
+show_grid = true
 global.grid_size = 16
 cursor_x = 0
 cursor_y = 0

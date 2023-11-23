@@ -12,7 +12,10 @@ if _window != undefined {
 	}
 } else {
 	draw_text(16, 16, $"X: {cursor_x}\nY: {cursor_y}\n{round((1 / zoom) * 100)}%")
-	_indicators = "[Space] Menu\n[Shift] Unsnap Cursor\n[C] Reset View"
+	_indicators = "[Space] Menu"
+	_indicators += "\n[Shift] Unsnap Cursor"
+	_indicators += "\n[G] " + (show_grid ? "Hide" : "Show") + " Grid"
+	_indicators += "\n[C] Reset View"
 }
 
 var _text_y = window_height - 16
