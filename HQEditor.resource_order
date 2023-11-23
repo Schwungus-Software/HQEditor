@@ -13,6 +13,7 @@
     {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
     {"name":"Level","order":8,"path":"folders/Scripts/Level.yy",},
     {"name":"Markers","order":2,"path":"folders/Scripts/Level/Markers.yy",},
+    {"name":"Config","order":9,"path":"folders/Scripts/Config.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"reload_assets","order":2,"path":"scripts/reload_assets/reload_assets.yy",},
@@ -30,7 +31,7 @@
     {"name":"NoDataWindow","order":2,"path":"scripts/NoDataWindow/NoDataWindow.yy",},
     {"name":"PolygonDef","order":1,"path":"scripts/PolygonDef/PolygonDef.yy",},
     {"name":"ThingMarker","order":1,"path":"scripts/ThingMarker/ThingMarker.yy",},
-    {"name":"config_save","order":4,"path":"scripts/config_save/config_save.yy",},
+    {"name":"config_save","order":1,"path":"scripts/config_save/config_save.yy",},
     {"name":"mod_find_files","order":4,"path":"scripts/mod_find_files/mod_find_files.yy",},
     {"name":"Image","order":1,"path":"scripts/Image/Image.yy",},
     {"name":"Group","order":4,"path":"scripts/Group/Group.yy",},

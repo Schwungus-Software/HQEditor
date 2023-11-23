@@ -6,6 +6,7 @@ function NoDataWindow(_x, _y) : Window(_x, _y) constructor {
 	add_item(new TextItem(16, 16, $"HQEngine data directory not found!\nYour current directory:"))
 	
 	add_item(new InputItem(16, 64, 256, 16, global.config.data_directory, function (_value) {
+		_value = string_trim(_value)
 		global.config.data_directory = _value
 		config_save()
 		
