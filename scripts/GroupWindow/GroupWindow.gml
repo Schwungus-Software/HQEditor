@@ -44,6 +44,7 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 					link_window(new GroupWindow(width, 0, other.content))
 				}
 			} else {
+				global.current_def = content
 				window.close()
 			}
 		})))

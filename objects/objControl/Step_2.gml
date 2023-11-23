@@ -27,8 +27,8 @@ if _window != undefined {
 		var _x = window_mouse_get_x()
 		var _y = window_mouse_get_y()
 	
-		_dx += (_x - drag_x) * zoom
-		_dy += (_y - drag_y) * zoom
+		_dx -= (_x - drag_x) * zoom
+		_dy -= (_y - drag_y) * zoom
 		drag_x = _x
 		drag_y = _y
 		camera_set_view_pos(camera, _dx, _dy)
@@ -42,6 +42,9 @@ if _window != undefined {
 		zoom = clamp(zoom + _inc, 0.1, 10)
 		camera_set_view_size(camera, window_width * zoom, window_height * zoom)
 	}
+	
+	cursor_x = round(mouse_x / grid_size) * grid_size
+	cursor_y = round(mouse_y / grid_size) * grid_size
 	
 	if keyboard_check_pressed(vk_space) {
 		global.window = new GroupWindow(window_mouse_get_x(), window_mouse_get_y(), global.root_group)

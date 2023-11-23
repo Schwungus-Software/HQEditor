@@ -1,0 +1,1 @@
+function PropMarker() : Marker() constructor {}

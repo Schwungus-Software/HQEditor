@@ -1,0 +1,1 @@
+function PolygonMarker() : Marker() constructor {}

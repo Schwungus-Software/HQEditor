@@ -1,0 +1,1 @@
+function ThingMarker() : Marker() constructor {}

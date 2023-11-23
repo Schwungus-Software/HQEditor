@@ -37,7 +37,12 @@ global.window = _start_window
 #endregion
 
 #region Editor
+global.current_def = undefined
+global.selected = undefined
 grid_size = 16
+
+cursor_x = 0
+cursor_y = 0
 
 camera = view_camera[0]
 drag_x = 0

@@ -11,9 +11,35 @@ if _window != undefined {
 		_indicators = _item_focus.indicators(_indicators)
 	}
 } else {
+	draw_text(16, 16, $"X: {cursor_x}\nY: {cursor_y}\n{(1 / zoom) * 100}%")
 	_indicators = "[Space] Menu"
 }
 
+var _text_y = window_height - 16
+
 draw_set_valign(fa_bottom)
-draw_text_color(16, window_get_height() - 16, _indicators, c_white, c_white, c_white, c_white, 0.5)
+draw_text_color(16, _text_y, _indicators, c_white, c_white, c_white, c_white, 0.5)
+
+var _current_def = global.current_def
+
+if _current_def != undefined {
+	var _image = undefined
+
+	if is_instanceof(_current_def, ThingDef) {
+		_image = _current_def.image
+	} else if is_instanceof(_current_def, PropDef) {
+		_image = _current_def.material.image
+	} else if is_instanceof(_current_def, PolygonDef) {
+		_image = _current_def.material.image
+	}
+	
+	if is_instanceof(_image, Image) {
+		draw_sprite_stretched(_image.sprite, 0, window_width - 80, window_height - 80, 64, 64)
+	} else {
+		draw_set_halign(fa_right)
+		draw_text(window_width - 16, _text_y, _current_def.name)
+		draw_set_halign(fa_left)
+	}
+}
+
 draw_set_valign(fa_top)
