@@ -1,0 +1,1 @@
+global.areas = ds_map_create()

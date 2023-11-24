@@ -1,1 +1,3 @@
-function Area() constructor {}
+function Area() constructor {
+	slot = noone
+}

@@ -1,17 +1,15 @@
 function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 	var _path = _group.path
 	
-	width = max(32, string_width(_path) + 16)
+	width = 32
 	height = 32
 	
 	group = _group
 	
-	add_item(new TextItem(8, 8, _path))
-	
 	var _window = self
 	var _contents = _group.contents
 	var i = 0
-	var _yy = 30
+	var _yy = 8
 	
 	repeat array_length(_contents) {
 		var _content = _contents[i++]
@@ -34,15 +32,12 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 		_name = _prefix + _content.name
 		
 		add_item(new ButtonItem(8, _yy, _name, method({
-			x: _x,
-			y: _y,
+			y: _yy,
 			content: _content,
 			window: _window,
 		}, function () {
 			if is_instanceof(content, Group) {
-				with window {
-					link_window(new GroupWindow(width, 0, other.content))
-				}
+				window.link_window(new GroupWindow(window.width + 2, y, content))
 			} else {
 				global.current_def = content
 				global.grid_size = content.grid_size
@@ -54,5 +49,17 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 		_yy += 22
 		width = max(width, string_width(_name) + 16)
 		height = max(height, _yy + 8)
+	}
+	
+	if _group == global.root_group {
+		height += 108
+		
+		add_item(new ButtonItem(8, _yy + 10, "Areas", function () {
+			link_window(new AreasWindow(width + 2, 0))
+		}))
+		
+		add_item(new ButtonItem(8, _yy + 42, "New", undefined))
+		add_item(new ButtonItem(8, _yy + 64, "Open", undefined))
+		add_item(new ButtonItem(8, _yy + 86, "Save", undefined))
 	}
 }

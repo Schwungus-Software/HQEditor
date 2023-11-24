@@ -12,11 +12,15 @@ global.window = _start_window
 #endregion
 
 #region Editor
+global.current_area = undefined
+
 global.current_def = undefined
 global.highlighted = undefined
 global.selected = []
 
 show_grid = true
+custom_grid = false
+custom_grid_size = 16
 global.grid_size = 16
 cursor_x = 0
 cursor_y = 0

@@ -21,6 +21,8 @@ if _window != undefined {
 var _text_y = window_height - 16
 var _current_def = global.current_def
 
+draw_set_valign(fa_bottom)
+
 if _current_def != undefined {
 	var _image = undefined
 
@@ -45,6 +47,5 @@ if _current_def != undefined {
 	}
 }
 
-draw_set_valign(fa_bottom)
 draw_text_color(16, _text_y, _indicators, c_white, c_white, c_white, c_white, 0.5)
 draw_set_valign(fa_top)
