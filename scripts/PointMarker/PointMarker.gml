@@ -1,0 +1,1 @@
+function PointMarker() : Marker() constructor {}

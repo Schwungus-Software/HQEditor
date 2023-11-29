@@ -54,9 +54,12 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 	if _group == global.root_group {
 		height += 108
 		
-		add_item(new ButtonItem(8, _yy + 10, "Areas", function () {
-			link_window(new AreasWindow(width + 2, 0))
-		}))
+		add_item(new ButtonItem(8, _yy + 10, "Areas", method({
+			y: _yy,
+			window: _window,
+		}, function () {
+			window.link_window(new AreasWindow(window.width + 2, y))
+		})))
 		
 		add_item(new ButtonItem(8, _yy + 42, "New", undefined))
 		add_item(new ButtonItem(8, _yy + 64, "Open", undefined))

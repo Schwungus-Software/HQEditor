@@ -21,6 +21,18 @@ if _window != undefined {
 var _text_y = window_height - 16
 var _current_def = global.current_def
 
+draw_set_halign(fa_right)
+
+var _current_area = global.current_area
+
+if _current_area != undefined {
+	with _current_area {
+		draw_text(other.window_width - 16, 16, $"Area {slot}\n{array_length(markers)} Markers")
+	}
+} else {
+	draw_text(window_width - 16, 16, "No Area selected")
+}
+
 draw_set_valign(fa_bottom)
 
 if _current_def != undefined {
@@ -37,9 +49,9 @@ if _current_def != undefined {
 	if is_instanceof(_image, Image) {
 		draw_sprite_stretched(_image.sprite, 0, window_width - 80, window_height - 80, 64, 64)
 	} else {
-		draw_set_halign(fa_right)
+		
 		draw_text(window_width - 16, _text_y, _current_def.name)
-		draw_set_halign(fa_left)
+		
 	}
 	
 	if _window == undefined {
@@ -47,5 +59,6 @@ if _current_def != undefined {
 	}
 }
 
+draw_set_halign(fa_left)
 draw_text_color(16, _text_y, _indicators, c_white, c_white, c_white, c_white, 0.5)
 draw_set_valign(fa_top)
