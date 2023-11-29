@@ -16,4 +16,13 @@ function Item(_x, _y) constructor {
 	static indicators = function (_str) {
 		return _str
 	}
+	
+	static set_focus = function (_click) {
+		if _click {
+			on_click()
+		}
+		
+		global.override_item_focus = true
+		global.item_focus = self
+	}
 }

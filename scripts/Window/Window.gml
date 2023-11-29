@@ -68,7 +68,11 @@ function Window(_x, _y) constructor {
 			return true
 		}
 		
-		return child != undefined and child.child != undefined ? child.get_clicked() : false
+		if child != undefined {
+			return child.get_clicked()
+		}
+		
+		return false
 	}
 	
 	static tick = function (_x = 0, _y = 0) {
@@ -101,9 +105,15 @@ function Window(_x, _y) constructor {
 					var _y1 = y + _y
 					
 					if point_in_rectangle(_mx, _my, _x1, _y1, _x1 + width, _y1 + height) {
-						other.clicked = true
 						on_click()
-						global.item_focus = self
+						
+						if global.override_item_focus {
+							global.override_item_focus = false
+						} else {
+							global.item_focus = self
+						}
+						
+						other.clicked = true
 					}
 				}
 			}
