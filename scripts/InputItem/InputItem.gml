@@ -37,9 +37,8 @@ function InputItem(_x, _y, _width, _height, _value, _callback) : Item(_x, _y) co
 			
 			if callback(_new) {
 				value = _new
+				global.item_focus = undefined
 			}
-			
-			global.item_focus = undefined
 		}
 	}
 	
