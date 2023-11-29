@@ -79,17 +79,18 @@ var _ww = window_get_width()
 var _wh = window_get_height()
 
 if window_width != _ww or window_height != _wh {
-	window_width = _ww
-	window_height = _wh
-	camera_set_view_size(camera, _ww * zoom, _wh * zoom)
+	window_width = clamp(_ww, 320, display_get_width())
+	window_height = clamp(_wh, 200, display_get_height())
+	window_set_size(window_width, window_height)
+	camera_set_view_size(camera, window_width * zoom, window_height * zoom)
 	
 	// Clamp current window position to screen
 	_window = global.window
 	
 	if _window != undefined {
 		with _window {
-			x = clamp(x, 0, _ww - width)
-			y = clamp(y, 0, _wh - height)
+			x = clamp(x, 0, window_width - width)
+			y = clamp(y, 0, window_height - height)
 		}
 	}
 }
