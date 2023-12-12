@@ -1,35 +1,57 @@
 #region Current Def Under Cursor
-if global.window == undefined {
-	var _current_def = global.current_def
+var _current_area = global.current_area
 
-	if _current_def != undefined {
-		var _image = undefined
-		var _polygon = false
-
-		if is_instanceof(_current_def, ThingDef) {
-			_image = _current_def.image
-		} else if is_instanceof(_current_def, PropDef) {
-			_image = _current_def.material.image
-		} else if is_instanceof(_current_def, PolygonDef) {
-			_polygon = true
-			_image = _current_def.material.image
-		}
-	
-		draw_set_alpha(0.5)
-	
-		if is_instanceof(_image, Image) {
-			var _sprite = _image.sprite
+if _current_area != undefined {
+	with _current_area {
+		var i = 0
 		
-			if _polygon{
-				draw_sprite_stretched(_sprite, 0, 2 - cursor_x, 2 - cursor_y, 4, 4)
-			} else {
-				draw_sprite(_sprite, 0, cursor_x, cursor_y)
+		repeat array_length(markers) {
+			markers[i++].draw()
+		}
+	}
+	
+	var _highlighted = global.highlighted
+	
+	if _highlighted != undefined {
+		with _highlighted {
+			draw_set_alpha(0.5)
+			draw_rectangle(bbox[0], bbox[1], bbox[2], bbox[3], true)
+			draw_set_alpha(1)
+		}
+	} else {
+		if global.window == undefined {
+			var _current_def = global.current_def
+
+			if _current_def != undefined {
+				var _image = undefined
+				var _polygon = false
+
+				if is_instanceof(_current_def, ThingDef) {
+					_image = _current_def.image
+				} else if is_instanceof(_current_def, PropDef) {
+					_image = _current_def.material.image
+				} else if is_instanceof(_current_def, PolygonDef) {
+					_polygon = true
+					_image = _current_def.material.image
+				}
+	
+				draw_set_alpha(0.5)
+	
+				if is_instanceof(_image, Image) {
+					var _sprite = _image.sprite
+		
+					if _polygon{
+						draw_sprite_stretched(_sprite, 0, 2 - cursor_x, 2 - cursor_y, 4, 4)
+					} else {
+						draw_sprite(_sprite, 0, cursor_x, cursor_y)
+					}
+				} else {
+					draw_rectangle_color(cursor_x - 2, cursor_y - 2, cursor_x + 2, cursor_y + 2, c_yellow, c_yellow, c_yellow, c_yellow, false)
+				}
+		
+				draw_set_alpha(1)
 			}
-		} else {
-			draw_rectangle_color(cursor_x - 2, cursor_y - 2, cursor_x + 2, cursor_y + 2, c_yellow, c_yellow, c_yellow, c_yellow, false)
 		}
-		
-		draw_set_alpha(1)
 	}
 }
 #endregion

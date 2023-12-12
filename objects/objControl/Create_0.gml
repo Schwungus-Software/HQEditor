@@ -9,6 +9,7 @@ if directory_exists(global.config.data_directory) {
 }
 
 global.window = _start_window
+global.window_step = false
 #endregion
 
 #region Editor
@@ -18,6 +19,8 @@ global.current_def = undefined
 global.highlighted = undefined
 global.selected = []
 
+highlight_priority = ds_priority_create()
+update_highlight = false
 show_grid = true
 custom_grid = false
 custom_grid_size = 16

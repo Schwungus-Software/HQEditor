@@ -15,6 +15,8 @@ if _window != undefined {
 	if _item_focus != undefined {
 		_item_focus.tick()
 	}
+	
+	global.window_step = true
 } else {
 	if keyboard_check_pressed(ord("G")) {
 		show_grid = not show_grid
@@ -66,8 +68,79 @@ if _window != undefined {
 		cursor_y = round(mouse_y / _grid_size) * _grid_size
 	}
 	
-	if _px != cursor_x or _py != cursor_y {
-		// Highlight marker under cursor
+	if update_highlight or _px != cursor_x or _py != cursor_y {
+		var _current_area = global.current_area
+		
+		if _current_area != undefined {
+			var _cx = cursor_x
+			var _cy = cursor_y
+			var _highlight_priority = highlight_priority
+			var _markers = _current_area.markers
+			var i = 0
+			
+			repeat array_length(_markers) {
+				var _marker = _markers[i++]
+				
+				with _marker {
+					if point_in_bbox(_cx, _cy) {
+						ds_priority_add(_highlight_priority, _marker, z)
+					}
+				}
+			}
+			
+			global.highlighted = ds_priority_find_max(_highlight_priority)
+			ds_priority_clear(_highlight_priority)
+		}
+		
+		update_highlight = false
+	}
+	
+	var _highlighted = global.highlighted
+	
+	if _highlighted == undefined {
+		if mouse_check_button_pressed(mb_left) or (keyboard_check(vk_alt) and mouse_check_button(mb_left)) {
+			// Don't place if a window was closed on the last frame.
+			if not global.window_step {
+				var _current_area = global.current_area
+				
+				if _current_area != undefined {
+					var _current_def = global.current_def
+				
+					if is_instanceof(_current_def, ThingDef) {
+						array_push(_current_area.markers, new ThingMarker(_current_def, cursor_x, cursor_y, _current_def.z))
+					}
+				
+					update_highlight = true
+				}
+			}
+		} else {
+			global.window_step = false
+		}
+	} else {
+		if mouse_check_button_pressed(mb_left) {
+			// Inspect Marker
+		}
+		
+		if mouse_check_button_pressed(mb_right) or (keyboard_check(vk_alt) and mouse_check_button(mb_right)) {
+			var _current_area = global.current_area
+		
+			if _current_area != undefined { // Just to be safe.
+				var _markers = _current_area.markers
+				var i = 0
+				
+				repeat array_length(_markers) {
+					if _markers[i] == _highlighted {
+						break
+					}
+					
+					++i
+				}
+				
+				array_delete(_markers, i, 1)
+			}
+			
+			update_highlight = true
+		}
 	}
 	
 	if keyboard_check_pressed(vk_space) {

@@ -142,6 +142,6 @@ function Window(_x, _y) constructor {
 	}
 
 	static indicators = function (_str) {
-		return _str + "\n[RMB] Move Window"
+		return _str + "\n[RMB] Move Window (Hold)"
 	}
 }
