@@ -68,6 +68,7 @@ function Group(_name, _contents, _from = undefined) constructor {
 							}
 						
 							image = _images.get(_image)
+							special = _content[$ "special"] ?? {}
 						}
 					break
 				

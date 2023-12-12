@@ -75,6 +75,16 @@ if show_grid {
 	// Origin
 	draw_set_alpha(0.5)
 	draw_circle(0, 0, 16, true)
+	
+	// Bounds
+	var _bounds = level_get_property("bounds")
+	
+	if is_array(_bounds) and array_length(_bounds) >= 4 {
+		try {
+			draw_rectangle(_bounds[0], _bounds[1], _bounds[2], _bounds[3], true)
+		} catch (e) {}
+	}
+	
 	draw_set_alpha(1)
 }
 #endregion

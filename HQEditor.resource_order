@@ -17,6 +17,7 @@
   ],
   "ResourceOrderSettings": [
     {"name":"reload_assets","order":2,"path":"scripts/reload_assets/reload_assets.yy",},
+    {"name":"PropertiesWindow","order":8,"path":"scripts/PropertiesWindow/PropertiesWindow.yy",},
     {"name":"mod_find_file","order":2,"path":"scripts/mod_find_file/mod_find_file.yy",},
     {"name":"MaterialMap","order":2,"path":"scripts/MaterialMap/MaterialMap.yy",},
     {"name":"PropDef","order":3,"path":"scripts/PropDef/PropDef.yy",},
@@ -40,6 +41,7 @@
     {"name":"PointMarker","order":4,"path":"scripts/PointMarker/PointMarker.yy",},
     {"name":"hqe_level","order":3,"path":"scripts/hqe_level/hqe_level.yy",},
     {"name":"Material","order":2,"path":"scripts/Material/Material.yy",},
+    {"name":"level_get_property","order":4,"path":"scripts/level_get_property/level_get_property.yy",},
     {"name":"ButtonItem","order":2,"path":"scripts/ButtonItem/ButtonItem.yy",},
     {"name":"AreasWindow","order":6,"path":"scripts/AreasWindow/AreasWindow.yy",},
     {"name":"Mod","order":1,"path":"scripts/Mod/Mod.yy",},

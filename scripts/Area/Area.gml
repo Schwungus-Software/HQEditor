@@ -1,6 +1,7 @@
 function Area() constructor {
 	slot = noone
 	markers = []
+	properties = {}
 	
 	static remove = function () {
 		if global.current_area == self {

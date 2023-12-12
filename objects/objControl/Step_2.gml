@@ -89,8 +89,8 @@ if window_width != _ww or window_height != _wh {
 	
 	if _window != undefined {
 		with _window {
-			x = clamp(x, 0, window_width - width)
-			y = clamp(y, 0, window_height - height)
+			x = clamp(x, 0, other.window_width - width)
+			y = clamp(y, 0, other.window_height - height)
 		}
 	}
 }

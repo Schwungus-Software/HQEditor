@@ -31,10 +31,11 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.8.2.108",
+    "IDEVersion": "2023.11.0.121",
   },
   "resources": [
     {"id":{"name":"reload_assets","path":"scripts/reload_assets/reload_assets.yy",},},
+    {"id":{"name":"PropertiesWindow","path":"scripts/PropertiesWindow/PropertiesWindow.yy",},},
     {"id":{"name":"Area","path":"scripts/Area/Area.yy",},},
     {"id":{"name":"mod_find_file","path":"scripts/mod_find_file/mod_find_file.yy",},},
     {"id":{"name":"Window","path":"scripts/Window/Window.yy",},},
@@ -67,6 +68,7 @@
     {"id":{"name":"hqe_level","path":"scripts/hqe_level/hqe_level.yy",},},
     {"id":{"name":"hqe_config","path":"scripts/hqe_config/hqe_config.yy",},},
     {"id":{"name":"Material","path":"scripts/Material/Material.yy",},},
+    {"id":{"name":"level_get_property","path":"scripts/level_get_property/level_get_property.yy",},},
     {"id":{"name":"ButtonItem","path":"scripts/ButtonItem/ButtonItem.yy",},},
     {"id":{"name":"AreasWindow","path":"scripts/AreasWindow/AreasWindow.yy",},},
     {"id":{"name":"Mod","path":"scripts/Mod/Mod.yy",},},

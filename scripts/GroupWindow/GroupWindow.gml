@@ -1,7 +1,7 @@
 function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 	var _path = _group.path
 	
-	width = 32
+	width = 106
 	height = 32
 	
 	group = _group
@@ -52,17 +52,36 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 	}
 	
 	if _group == global.root_group {
-		height += 108
+		height += 130
 		
-		add_item(new ButtonItem(8, _yy + 10, "Areas", method({
+		add_item(new ButtonItem(8, _yy + 10, "Properties", method({
+			y: _yy,
+			window: _window,
+		}, function () {
+			var _level_properties = new PropertiesWindow(window.width + 2, y, "Level Properties", global.properties)
+			
+			window.link_window(_level_properties)
+			
+			if global.current_area != undefined {
+				var _current_area = global.current_area
+				var _area_properties = new PropertiesWindow(_level_properties.width + 2, 0, $"Area {_current_area.slot} Properties", _current_area.properties)
+				
+				_area_properties.popup = false
+				_level_properties.link_window(_area_properties)
+			}
+		})))
+		
+		_yy += 32
+		
+		add_item(new ButtonItem(8, _yy, "Areas", method({
 			y: _yy,
 			window: _window,
 		}, function () {
 			window.link_window(new AreasWindow(window.width + 2, y))
 		})))
 		
-		add_item(new ButtonItem(8, _yy + 42, "New", undefined))
-		add_item(new ButtonItem(8, _yy + 64, "Open", undefined))
-		add_item(new ButtonItem(8, _yy + 86, "Save", undefined))
+		add_item(new ButtonItem(8, _yy + 32, "New", undefined))
+		add_item(new ButtonItem(8, _yy + 54, "Open", undefined))
+		add_item(new ButtonItem(8, _yy + 76, "Save", undefined))
 	}
 }

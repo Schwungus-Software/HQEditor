@@ -1,1 +1,3 @@
-function ThingMarker() : Marker() constructor {}
+function ThingMarker() : Marker() constructor {
+	special = {}
+}

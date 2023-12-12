@@ -95,6 +95,8 @@ function Window(_x, _y) constructor {
 					
 					exit
 				}
+				
+				clicked = false
 			}
 			
 			var i = 0
