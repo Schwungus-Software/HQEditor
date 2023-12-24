@@ -24,14 +24,14 @@ if _current_area != undefined {
 
 			if _current_def != undefined {
 				var _image = undefined
-				var _polygon = false
+				var _primitive = false
 
 				if is_instanceof(_current_def, ThingDef) {
 					_image = _current_def.image
 				} else if is_instanceof(_current_def, PropDef) {
 					_image = _current_def.material.image
-				} else if is_instanceof(_current_def, PolygonDef) {
-					_polygon = true
+				} else if is_instanceof(_current_def, LineDef) or is_instanceof(_current_def, PolygonDef) {
+					_primitive = true
 					_image = _current_def.material.image
 				}
 	
@@ -40,7 +40,7 @@ if _current_area != undefined {
 				if is_instanceof(_image, Image) {
 					var _sprite = _image.sprite
 		
-					if _polygon{
+					if _primitive {
 						draw_sprite_stretched(_sprite, 0, 2 - cursor_x, 2 - cursor_y, 4, 4)
 					} else {
 						draw_sprite(_sprite, 0, cursor_x, cursor_y)

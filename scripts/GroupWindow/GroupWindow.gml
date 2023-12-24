@@ -24,6 +24,9 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 		} else if is_instanceof(_content, PropDef) {
 			_image = _content.material.image
 			_prefix = is_instanceof(_image, Image) ? "  " : "[PR] "
+		} else if is_instanceof(_content, LineDef) {
+			_image = _content.material.image
+			_prefix = is_instanceof(_image, Image) ? "  " : "[L] "
 		} else if is_instanceof(_content, PolygonDef) {
 			_image = _content.material.image
 			_prefix = is_instanceof(_image, Image) ? "  " : "[PG] "
@@ -82,6 +85,9 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 		
 		add_item(new ButtonItem(8, _yy + 32, "New", undefined))
 		add_item(new ButtonItem(8, _yy + 54, "Open", undefined))
-		add_item(new ButtonItem(8, _yy + 76, "Save", undefined))
+		
+		add_item(new ButtonItem(8, _yy + 76, "Save", function () {
+			level_save(get_save_filename_ext("*.hql", global.last_name, global.config.data_directory + "/levels/", "Save As..."))
+		}))
 	}
 }

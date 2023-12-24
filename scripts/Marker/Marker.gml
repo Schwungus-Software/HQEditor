@@ -9,6 +9,9 @@ function Marker(_def, _x, _y, _z) constructor {
 	children = []
 	parent = undefined
 	
+	tag = 0
+	special = struct_copy(_def.special, {})
+	
 	static point_in_bbox = function (_px, _py) {
 		return false
 	}

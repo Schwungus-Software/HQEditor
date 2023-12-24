@@ -36,7 +36,12 @@ function Group(_name, _contents, _from = undefined) constructor {
 					case DefTypes.PROP:
 						_type = DefTypes.PROP
 					break
-				
+					
+					case "line":
+					case DefTypes.LINE:
+						_type = DefTypes.LINE
+					break
+					
 					case "polygon":
 					case DefTypes.POLYGON:
 						_type = DefTypes.POLYGON
@@ -85,9 +90,29 @@ function Group(_name, _contents, _from = undefined) constructor {
 							}
 						
 							material = _materials.get(_material)
+							
+							if material != undefined {
+								image = material.image
+							}
 						}
 					break
-				
+					
+					case DefTypes.LINE:
+						_def = new LineDef()
+						
+						with _def {
+							var _material = _content[$ "material"]
+							
+							if is_string(_material) {
+								_materials.load(_material)
+							} else {
+								_material = ""
+							}
+							
+							material = _materials.get(_material)
+						}
+					break
+					
 					case DefTypes.POLYGON:
 						_def = new PolygonDef()
 					
@@ -109,8 +134,14 @@ function Group(_name, _contents, _from = undefined) constructor {
 					name = string(_content[$ "def"])
 					grid_size = real(_content[$ "grid_size"] ?? grid_size)
 					z = real(_content[$ "z"] ?? grid_size)
+					
+					var _special = _content[$ "special"]
+					
+					if is_struct(_special) {
+						struct_copy(_special, special)
+					}
 				}
-			
+				
 				array_push(contents, _def)
 			}
 		

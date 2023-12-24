@@ -7,7 +7,7 @@ function PropMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor {
 		sprite = _image == undefined ? -1 : _image.sprite
 	}
 	
-	flipped = false
+	flip = false
 	x_scale = 1
 	y_scale = 1
 	angle = 0
@@ -22,7 +22,7 @@ function PropMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor {
 			_y2 = y + 4
 		} else {
 			// TODO: Change this code to account for rotated sprites.
-			var _x_scale = flipped ? -x_scale : x_scale
+			var _x_scale = flip ? -x_scale : x_scale
 			
 			_x1 = x - sprite_get_xoffset(sprite) * _x_scale
 			_y1 = y - sprite_get_yoffset(sprite) * y_scale
@@ -50,6 +50,6 @@ function PropMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor {
 			exit
 		}
 		
-		draw_sprite_ext(sprite, 0, x, y, flipped ? -x_scale : x_scale, y_scale, angle, c_white, 1)
+		draw_sprite_ext(sprite, 0, x, y, flip ? -x_scale : x_scale, y_scale, angle, c_white, 1)
 	}
 }

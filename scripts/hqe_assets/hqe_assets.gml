@@ -2,6 +2,7 @@ enum DefTypes {
 	NONE,
 	THING,
 	PROP,
+	LINE,
 	POLYGON,
 }
 

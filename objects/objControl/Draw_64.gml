@@ -39,9 +39,7 @@ if _current_area != undefined {
 		
 		if is_instanceof(_current_def, ThingDef) {
 			_image = _current_def.image
-		} else if is_instanceof(_current_def, PropDef) {
-			_image = _current_def.material.image
-		} else if is_instanceof(_current_def, PolygonDef) {
+		} else if is_instanceof(_current_def, PropDef) or is_instanceof(_current_def, LineDef) or is_instanceof(_current_def, PolygonDef) {
 			_image = _current_def.material.image
 		}
 		

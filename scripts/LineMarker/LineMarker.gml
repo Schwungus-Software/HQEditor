@@ -1,0 +1,1 @@
+function LineMarker() : Marker() constructor {}

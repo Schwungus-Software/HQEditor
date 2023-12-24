@@ -1,6 +1,6 @@
-function PolygonDef() : Def() constructor {
+function LineDef() : Def() constructor {
 	material = undefined
-	z = 50
+	z = 40
 	
 	special = {
 		x_scroll: 1,
