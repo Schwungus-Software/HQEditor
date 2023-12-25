@@ -8,3 +8,4 @@ enum DefTypes {
 
 global.mods = ds_map_create()
 global.root_group = undefined
+global.defs = ds_map_create()

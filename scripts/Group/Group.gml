@@ -16,6 +16,7 @@ function Group(_name, _contents, _from = undefined) constructor {
 	path = get_path()
 	
 	static add_contents = function (_contents) {
+		var _defs = global.defs
 		var _images = global.images
 		var _materials = global.materials
 		var i = 0
@@ -140,6 +141,8 @@ function Group(_name, _contents, _from = undefined) constructor {
 					if is_struct(_special) {
 						struct_copy(_special, special)
 					}
+					
+					ds_map_add(_defs, name, _def)
 				}
 				
 				array_push(contents, _def)

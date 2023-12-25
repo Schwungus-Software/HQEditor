@@ -1,5 +1,6 @@
 function reload_assets(_recursive = false) {
 #region Unload Assets
+	ds_map_clear(global.defs)
 	global.images.clear()
 	global.materials.clear()
 	global.root_group = undefined

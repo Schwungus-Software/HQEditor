@@ -83,10 +83,20 @@ function GroupWindow(_x, _y, _group) : Window(_x, _y) constructor {
 			window.link_window(new AreasWindow(window.width + 2, y))
 		})))
 		
-		add_item(new ButtonItem(8, _yy + 32, "New", undefined))
-		add_item(new ButtonItem(8, _yy + 54, "Open", undefined))
+		_yy += 32
 		
-		add_item(new ButtonItem(8, _yy + 76, "Save", function () {
+		add_item(new ButtonItem(8, _yy, "New", method({
+			y: _yy,
+			window: _window,
+		}, function () {
+			window.link_window(new ConfirmNewWindow(window.width + 2, y))
+		})))
+		
+		add_item(new ButtonItem(8, _yy + 22, "Open", function () {
+			level_load(get_open_filename_ext("*.hql", global.last_name, global.config.data_directory + "/levels/", "Open..."))
+		}))
+		
+		add_item(new ButtonItem(8, _yy + 44, "Save", function () {
 			level_save(get_save_filename_ext("*.hql", global.last_name, global.config.data_directory + "/levels/", "Save As..."))
 		}))
 	}
