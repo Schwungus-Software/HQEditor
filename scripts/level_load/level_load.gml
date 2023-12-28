@@ -30,6 +30,8 @@ function level_load(_filename) {
 		return false
 	}
 	
+	level_clear()
+	
 	var _properties = global.properties
 	
 	struct_clear(_properties)
