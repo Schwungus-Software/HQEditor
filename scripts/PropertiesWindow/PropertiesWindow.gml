@@ -81,6 +81,10 @@ function PropertiesWindow(_x, _y, _title, _properties) : Window(_x, _y) construc
 	add_item(value_input)
 	
 	static add_property = function (_key, _value) {
+		if _key == "" {
+			return false
+		}
+		
 		try {
 			_value = json_parse(_value)
 			properties[$ _key] = _value
