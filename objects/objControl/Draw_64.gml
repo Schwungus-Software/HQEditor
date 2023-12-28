@@ -15,7 +15,7 @@ if _window != undefined {
 	_indicators = "[Space] Menu"
 	_indicators += "\n[Shift] Unsnap Cursor (Hold)"
 	_indicators += "\n[G] " + (show_grid ? "Hide" : "Show") + " Grid"
-	_indicators += "\n[C] Reset View"
+	_indicators += "\n[R] Reset View"
 }
 
 var _text_y = window_height - 16

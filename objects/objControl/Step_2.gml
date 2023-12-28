@@ -22,7 +22,7 @@ if _window != undefined {
 		show_grid = not show_grid
 	}
 	
-	if keyboard_check_pressed(ord("C")) {
+	if keyboard_check_pressed(ord("R")) {
 		zoom = 1
 		camera_set_view_pos(camera, 0, 0)
 		camera_set_view_size(camera, window_width, window_height)
