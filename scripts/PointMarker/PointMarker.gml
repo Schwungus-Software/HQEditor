@@ -1,17 +1,9 @@
 function PointMarker(_x, _y, _z) : Marker(undefined, _x, _y, _z) constructor {
-	static point_in_bbox = function (_px, _py) {
-		var _x1 = x - 4
-		var _y1 = y - 4
-		var _x2 = x + 4
-		var _y2 = y + 4
-		
-		if point_in_rectangle(_px, _py, _x1, _y1, _x2, _y2) {
-			bbox = [_x1, _y1, _x2, _y2]
-			
-			return true
-		}
-		
-		return false
+	static update_bbox = function () {
+		bbox[0] = x - 4
+		bbox[1] = y - 4
+		bbox[2] = x + 4
+		bbox[3] = y + 4
 	}
 	
 	static draw = function () {

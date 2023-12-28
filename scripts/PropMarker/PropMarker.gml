@@ -12,7 +12,7 @@ function PropMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor {
 	y_scale = 1
 	angle = 0
 	
-	static point_in_bbox = function (_px, _py) {
+	static update_bbox = function () {
 		var _x1, _y1, _x2, _y2
 		
 		if sprite == -1 {
@@ -30,13 +30,10 @@ function PropMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor {
 			_y2 = _y1 + sprite_get_height(sprite) * y_scale
 		}
 		
-		if point_in_rectangle(_px, _py, _x1, _y1, _x2, _y2) {
-			bbox = [_x1, _y1, _x2, _y2]
-			
-			return true
-		}
-		
-		return false
+		bbox[0] = min(_x1, _x2)
+		bbox[1] = min(_y1, _y2)
+		bbox[2] = max(_x1, _x2)
+		bbox[3] = max(_y1, _y2)
 	}
 	
 	static draw = function () {

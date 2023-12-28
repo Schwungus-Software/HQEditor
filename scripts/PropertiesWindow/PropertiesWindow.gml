@@ -115,6 +115,10 @@ function PropertiesWindow(_x, _y, _title, _properties) : Window(_x, _y) construc
 			_updated_window.link_window(_child)
 		}
 		
+		if global.window == self {
+			global.window = _updated_window
+		}
+		
 		close()
 		_updated_window.clicked = true
 		

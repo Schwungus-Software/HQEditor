@@ -11,7 +11,7 @@ function ThingMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor {
 	persistent = false
 	disposable = false
 	
-	static point_in_bbox = function (_px, _py) {
+	static update_bbox = function () {
 		var _x1, _y1, _x2, _y2
 		
 		if sprite == -1 {
@@ -29,9 +29,16 @@ function ThingMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor {
 			_y2 = _y1 + sprite_get_height(sprite)
 		}
 		
-		if point_in_rectangle(_px, _py, _x1, _y1, _x2, _y2) {
-			bbox = [_x1, _y1, _x2, _y2]
-			
+		bbox[0] = min(_x1, _x2)
+		bbox[1] = min(_y1, _y2)
+		bbox[2] = max(_x1, _x2)
+		bbox[3] = max(_y1, _y2)
+	}
+	
+	static point_in_bbox = function (_px, _py) {
+		update_bbox()
+		
+		if point_in_rectangle(_px, _py, bbox[0], bbox[1], bbox[2], bbox[3]) {
 			return true
 		}
 		

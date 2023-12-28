@@ -43,6 +43,7 @@
     {"name":"Image","order":1,"path":"scripts/Image/Image.yy",},
     {"name":"buffer_read_dynamic","order":13,"path":"scripts/buffer_read_dynamic/buffer_read_dynamic.yy",},
     {"name":"Group","order":4,"path":"scripts/Group/Group.yy",},
+    {"name":"MarkerWindow","order":11,"path":"scripts/MarkerWindow/MarkerWindow.yy",},
     {"name":"level_load","order":6,"path":"scripts/level_load/level_load.yy",},
     {"name":"hqe_assets","order":3,"path":"scripts/hqe_assets/hqe_assets.yy",},
     {"name":"LineDef","order":5,"path":"scripts/LineDef/LineDef.yy",},

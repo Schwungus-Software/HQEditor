@@ -118,10 +118,10 @@ if _window != undefined {
 		}
 	} else {
 		if mouse_check_button_pressed(mb_left) {
-			// Inspect Marker
-		}
-		
-		if mouse_check_button_pressed(mb_right) or (keyboard_check(vk_alt) and mouse_check_button(mb_right)) {
+			global.window = new MarkerWindow(window_mouse_get_x(), window_mouse_get_y(), _highlighted)
+		} else if mouse_check_button_pressed(mb_middle) {
+			global.current_def = _highlighted.def
+		} else if mouse_check_button_pressed(mb_right) or (keyboard_check(vk_alt) and mouse_check_button(mb_right)) {
 			var _current_area = global.current_area
 		
 			if _current_area != undefined { // Just to be safe.
@@ -129,7 +129,11 @@ if _window != undefined {
 				var i = 0
 				
 				repeat array_length(_markers) {
-					if _markers[i] == _highlighted {
+					var _marker = _markers[i]
+					
+					if _marker == _highlighted {
+						_marker.remove()
+						
 						break
 					}
 					
