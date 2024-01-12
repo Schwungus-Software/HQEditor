@@ -18,6 +18,7 @@ global.current_area = undefined
 global.current_def = undefined
 global.highlighted = undefined
 global.selected = []
+global.queue_points = []
 
 highlight_priority = ds_priority_create()
 update_highlight = false

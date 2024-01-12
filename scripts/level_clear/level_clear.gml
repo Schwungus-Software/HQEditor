@@ -14,4 +14,5 @@ function level_clear() {
 	global.current_area = undefined
 	global.highlighted = undefined
 	array_resize(global.selected, 0)
+	array_resize(global.queue_points, 0)
 }

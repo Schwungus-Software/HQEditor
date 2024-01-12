@@ -19,13 +19,37 @@ if _current_area != undefined {
 			draw_set_alpha(1)
 		}
 	} else {
+		var _queue_points = global.queue_points
+		var n = array_length(_queue_points)
+		
+		if n {
+			var i = n
+			
+			repeat i {
+				--i
+				
+				var _p1 = _queue_points[i]
+				var j = -~i
+				
+				if j >= n {
+					draw_line_color(_p1[0], _p1[1], cursor_x, cursor_y, c_yellow, c_yellow)
+					
+					continue
+				}
+				
+				var _p2 = _queue_points[j]
+				
+				draw_line_color(_p1[0], _p1[1], _p2[0], _p2[1], c_orange, c_orange)
+			}
+		}
+		
 		if global.window == undefined {
 			var _current_def = global.current_def
-
+			
 			if _current_def != undefined {
 				var _image = undefined
 				var _primitive = false
-
+				
 				if is_instanceof(_current_def, ThingDef) {
 					_image = _current_def.image
 				} else if is_instanceof(_current_def, PropDef) {
@@ -34,12 +58,12 @@ if _current_area != undefined {
 					_primitive = true
 					_image = _current_def.material.image
 				}
-	
+				
 				draw_set_alpha(0.5)
-	
+				
 				if is_instanceof(_image, Image) {
 					var _sprite = _image.sprite
-		
+					
 					if _primitive {
 						draw_sprite_stretched(_sprite, 0, 2 - cursor_x, 2 - cursor_y, 4, 4)
 					} else {

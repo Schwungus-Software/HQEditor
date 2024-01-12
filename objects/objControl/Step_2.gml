@@ -69,27 +69,31 @@ if _window != undefined {
 	}
 	
 	if update_highlight or _px != cursor_x or _py != cursor_y {
-		var _current_area = global.current_area
+		if array_length(global.queue_points) {
+			global.highlighted = undefined
+		} else {
+			var _current_area = global.current_area
 		
-		if _current_area != undefined {
-			var _cx = cursor_x
-			var _cy = cursor_y
-			var _highlight_priority = highlight_priority
-			var _markers = _current_area.markers
-			var i = 0
+			if _current_area != undefined {
+				var _cx = cursor_x
+				var _cy = cursor_y
+				var _highlight_priority = highlight_priority
+				var _markers = _current_area.markers
+				var i = 0
 			
-			repeat array_length(_markers) {
-				var _marker = _markers[i++]
+				repeat array_length(_markers) {
+					var _marker = _markers[i++]
 				
-				with _marker {
-					if point_in_bbox(_cx, _cy) {
-						ds_priority_add(_highlight_priority, _marker, z)
+					with _marker {
+						if point_in_bbox(_cx, _cy) {
+							ds_priority_add(_highlight_priority, _marker, z)
+						}
 					}
 				}
-			}
 			
-			global.highlighted = ds_priority_find_max(_highlight_priority)
-			ds_priority_clear(_highlight_priority)
+				global.highlighted = ds_priority_find_max(_highlight_priority)
+				ds_priority_clear(_highlight_priority)
+			}
 		}
 		
 		update_highlight = false
@@ -105,16 +109,51 @@ if _window != undefined {
 				
 				if _current_area != undefined {
 					var _current_def = global.current_def
-				
+					var _markers = _current_area.markers
+					var _z = _current_def.z
+					
 					if is_instanceof(_current_def, ThingDef) {
-						array_push(_current_area.markers, new ThingMarker(_current_def, cursor_x, cursor_y, _current_def.z))
+						array_push(_markers, new ThingMarker(_current_def, cursor_x, cursor_y, _z))
+					} else if is_instanceof(_current_def, PropDef) {
+						array_push(_markers, new PropMarker(_current_def, cursor_x, cursor_y, _z))
+					} else if is_instanceof(_current_def, LineDef) or is_instanceof(_current_def, PolygonDef) {
+						var _queue_points = global.queue_points
+						var n = array_length(_queue_points)
+						var _push = true
+						
+						if n {
+							var p = _queue_points[0]
+							
+							if p[0] == cursor_x and p[1] == cursor_y {
+								if n > 1 {
+									// Create Line/PolygonMarker
+								}
+								
+								array_resize(_queue_points, 0)
+								_push = false
+							}
+						}
+						
+						if _push {
+							array_push(global.queue_points, [cursor_x, cursor_y])
+						}
 					}
-				
+					
 					update_highlight = true
 				}
 			}
 		} else {
 			global.window_step = false
+		}
+		
+		if mouse_check_button_pressed(mb_right) {
+			var _queue_points = global.queue_points
+			
+			if array_length(_queue_points) {
+				array_resize(_queue_points, 0)
+			}
+			
+			update_highlight = true
 		}
 	} else {
 		if mouse_check_button_pressed(mb_left) {
@@ -122,33 +161,39 @@ if _window != undefined {
 		} else if mouse_check_button_pressed(mb_middle) {
 			global.current_def = _highlighted.def
 		} else if mouse_check_button_pressed(mb_right) or (keyboard_check(vk_alt) and mouse_check_button(mb_right)) {
-			var _current_area = global.current_area
-		
-			if _current_area != undefined { // Just to be safe.
-				var _markers = _current_area.markers
-				var i = 0
+			var _markers = global.current_area.markers
+			var i = 0
+			
+			repeat array_length(_markers) {
+				var _marker = _markers[i]
 				
-				repeat array_length(_markers) {
-					var _marker = _markers[i]
+				if _marker == _highlighted {
+					_marker.remove()
 					
-					if _marker == _highlighted {
-						_marker.remove()
-						
-						break
-					}
-					
-					++i
+					break
 				}
 				
-				array_delete(_markers, i, 1)
+				++i
 			}
 			
+			array_delete(_markers, i, 1)
 			update_highlight = true
 		}
 	}
 	
 	if keyboard_check_pressed(vk_space) {
-		global.window = new GroupWindow(window_mouse_get_x(), window_mouse_get_y(), global.root_group)
+		var _queue_points = global.queue_points
+		var n = array_length(_queue_points)
+		
+		if n {
+			if n > 1 {
+				// Create Line/PolygonMarker
+			}
+			
+			array_resize(global.queue_points, 0)
+		} else {
+			global.window = new GroupWindow(window_mouse_get_x(), window_mouse_get_y(), global.root_group)
+		}
 	}
 }
 

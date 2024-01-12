@@ -1,5 +1,6 @@
 var _indicators
 var _window = global.window
+var _has_points = array_length(global.queue_points)
 
 if _window != undefined {
 	_window.draw(0, 0)
@@ -12,7 +13,7 @@ if _window != undefined {
 	}
 } else {
 	draw_text(16, 16, $"X: {cursor_x}\nY: {cursor_y}\n{round((1 / zoom) * 100)}%")
-	_indicators = "[Space] Menu"
+	_indicators = "[Space] " + (_has_points ? "Finish Shape" : "Menu")
 	_indicators += "\n[Shift] Unsnap Cursor (Hold)"
 	_indicators += "\n[G] " + (show_grid ? "Hide" : "Show") + " Grid"
 	_indicators += "\n[R] Reset View"
@@ -27,7 +28,13 @@ var _current_area = global.current_area
 
 if _current_area != undefined {
 	with _current_area {
-		draw_text(other.window_width - 16, 16, $"Area {slot}\n{array_length(markers)} Markers")
+		var _info = $"Area {slot}\n{array_length(markers)} Markers"
+		
+		if _has_points {
+			_info += $"\nShape has {_has_points} points"
+		}
+		
+		draw_text(other.window_width - 16, 16, _info)
 	}
 	
 	draw_set_valign(fa_bottom)
@@ -50,7 +57,13 @@ if _current_area != undefined {
 		}
 	
 		if _window == undefined and _highlighted == undefined {
-			_indicators += "\n[LMB] Place Marker"
+			if _has_points {
+				_indicators += "\n[LMB] Place Point"
+				_indicators += "\n[RMB] Cancel Shape"
+			} else {
+				_indicators += "\n[LMB] Place Marker"
+			}
+			
 			_indicators += "\n[Alt] Spam Mode (Hold)"
 		}
 	}
