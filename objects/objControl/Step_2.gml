@@ -58,15 +58,8 @@ if _window != undefined {
 	var _px = cursor_x
 	var _py = cursor_y
 	
-	if keyboard_check(vk_shift) {
-		cursor_x = mouse_x
-		cursor_y = mouse_y
-	} else {
-		var _grid_size = global.grid_size
-		
-		cursor_x = round(mouse_x / _grid_size) * _grid_size
-		cursor_y = round(mouse_y / _grid_size) * _grid_size
-	}
+	cursor_x = mouse_x
+	cursor_y = mouse_y
 	
 	if update_highlight or _px != cursor_x or _py != cursor_y {
 		if array_length(global.queue_points) {
@@ -86,7 +79,7 @@ if _window != undefined {
 				
 					with _marker {
 						if point_in_bbox(_cx, _cy) {
-							ds_priority_add(_highlight_priority, _marker, z)
+							ds_priority_add(_highlight_priority, _marker, z + priority)
 						}
 					}
 				}
@@ -99,6 +92,13 @@ if _window != undefined {
 		update_highlight = false
 	}
 	
+	if not keyboard_check(vk_shift) {
+		var _grid_size = global.grid_size
+		
+		cursor_x = round(mouse_x / _grid_size) * _grid_size
+		cursor_y = round(mouse_y / _grid_size) * _grid_size
+	}
+	
 	var _highlighted = global.highlighted
 	
 	if _highlighted == undefined {
@@ -109,37 +109,36 @@ if _window != undefined {
 				
 				if _current_area != undefined {
 					var _current_def = global.current_def
-					var _markers = _current_area.markers
-					var _z = _current_def.z
 					
-					if is_instanceof(_current_def, ThingDef) {
-						array_push(_markers, new ThingMarker(_current_def, cursor_x, cursor_y, _z))
-					} else if is_instanceof(_current_def, PropDef) {
-						array_push(_markers, new PropMarker(_current_def, cursor_x, cursor_y, _z))
-					} else if is_instanceof(_current_def, LineDef) or is_instanceof(_current_def, PolygonDef) {
-						var _queue_points = global.queue_points
-						var n = array_length(_queue_points)
-						var _push = true
+					if _current_def != undefined {
+						var _z = _current_def.z
+					
+						if is_instanceof(_current_def, ThingDef) {
+							_current_area.add(new ThingMarker(_current_def, cursor_x, cursor_y, _z))
+						} else if is_instanceof(_current_def, PropDef) {
+							_current_area.add(new PropMarker(_current_def, cursor_x, cursor_y, _z))
+						} else if is_instanceof(_current_def, LineDef) or is_instanceof(_current_def, PolygonDef) {
+							var _queue_points = global.queue_points
+							var n = array_length(_queue_points)
+							var _push = true
 						
-						if n {
-							var p = _queue_points[0]
+							if n {
+								var p = _queue_points[0]
 							
-							if p[0] == cursor_x and p[1] == cursor_y {
-								if n > 1 {
-									// Create Line/PolygonMarker
+								if p[0] == cursor_x and p[1] == cursor_y {
+									_current_area.add_polygon(_current_def, _queue_points)
+									array_resize(_queue_points, 0)
+									_push = false
 								}
-								
-								array_resize(_queue_points, 0)
-								_push = false
+							}
+						
+							if _push {
+								array_push(global.queue_points, [cursor_x, cursor_y])
 							}
 						}
-						
-						if _push {
-							array_push(global.queue_points, [cursor_x, cursor_y])
-						}
-					}
 					
-					update_highlight = true
+						update_highlight = true
+					}
 				}
 			}
 		} else {
@@ -161,22 +160,7 @@ if _window != undefined {
 		} else if mouse_check_button_pressed(mb_middle) {
 			global.current_def = _highlighted.def
 		} else if mouse_check_button_pressed(mb_right) or (keyboard_check(vk_alt) and mouse_check_button(mb_right)) {
-			var _markers = global.current_area.markers
-			var i = 0
-			
-			repeat array_length(_markers) {
-				var _marker = _markers[i]
-				
-				if _marker == _highlighted {
-					_marker.remove()
-					
-					break
-				}
-				
-				++i
-			}
-			
-			array_delete(_markers, i, 1)
+			_highlighted.remove()
 			update_highlight = true
 		}
 	}
@@ -186,10 +170,7 @@ if _window != undefined {
 		var n = array_length(_queue_points)
 		
 		if n {
-			if n > 1 {
-				// Create Line/PolygonMarker
-			}
-			
+			global.current_area.add_polygon(global.current_def, _queue_points)
 			array_resize(global.queue_points, 0)
 		} else {
 			global.window = new GroupWindow(window_mouse_get_x(), window_mouse_get_y(), global.root_group)

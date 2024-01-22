@@ -24,6 +24,7 @@ function MaterialMap() : AssetMap() constructor {
 			
 			if is_string(_image) {
 				_images.load(_image)
+				_image = _images.get(_image) ?? -1
 			}
 			
 			_alpha_test = _json[$ "alpha_test"] ?? 0.5

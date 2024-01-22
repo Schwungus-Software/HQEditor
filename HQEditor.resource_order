@@ -14,6 +14,7 @@
     {"name":"Windows","order":1,"path":"folders/Scripts/Windows.yy",},
     {"name":"Items","order":3,"path":"folders/Scripts/Windows/Items.yy",},
     {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
+    {"name":"Math","order":16,"path":"folders/Scripts/Math.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"reload_assets","order":2,"path":"scripts/reload_assets/reload_assets.yy",},

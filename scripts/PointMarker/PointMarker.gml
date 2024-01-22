@@ -1,4 +1,6 @@
 function PointMarker(_x, _y, _z) : Marker(undefined, _x, _y, _z) constructor {
+	priority = 1
+	
 	static update_bbox = function () {
 		bbox[0] = x - 4
 		bbox[1] = y - 4

@@ -3,8 +3,6 @@ function LineDef() : Def() constructor {
 	z = 40
 	
 	special = {
-		x_scroll: 1,
-		y_scroll: 1,
 		layer: 0,
 		body: true,
 		projectile: true,
