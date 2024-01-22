@@ -3,6 +3,8 @@ function PolygonMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor 
 	
 	vbo = undefined
 	
+	x_origin = 0
+	y_origin = 0
 	x_offset = 0
 	y_offset = 0
 	x_scale = 1
@@ -161,8 +163,12 @@ function PolygonMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor 
 		var _tu = 1
 		var _tv = 1
 		
-		if def.material != undefined {
-			_image = def.material.image
+		if def != undefined {
+			var _material = def.material
+			
+			if _material != undefined {
+				_image = _material.image
+			}
 		}
 		
 		if _image != -1 {
@@ -197,7 +203,12 @@ function PolygonMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor 
 	}
 	
 	static draw = function () {
-		var _material = def.material
+		var _material = undefined
+		
+		if def != undefined {
+			_material = def.material
+		}
+		
 		var _image = -1
 		
 		if _material != undefined {
@@ -209,5 +220,14 @@ function PolygonMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor 
 		}
 		
 		vertex_submit(vbo, pr_trianglelist, _image)
+		gpu_set_depth(z)
+		draw_set_alpha(0.64)
+		
+		var _x = x - x_origin
+		var _y = y - y_origin
+		
+		draw_line(_x - 16, _y, _x + 16, _y)
+		draw_line(_x, _y - 16, _x, _y + 16)
+		draw_set_alpha(1)
 	}
 }

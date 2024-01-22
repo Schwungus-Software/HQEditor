@@ -57,7 +57,44 @@ function level_load(_filename) {
 			
 			var _n_polygons = buffer_read(_buffer, buffer_u32)
 			
-			repeat _n_polygons {}
+			repeat _n_polygons {
+				var _def_name = buffer_read(_buffer, buffer_string)
+				var _def = _defs[? _def_name]
+				
+				buffer_read(_buffer, buffer_string) // Unused for editor
+				
+				var _x = buffer_read(_buffer, buffer_f32)
+				var _y = buffer_read(_buffer, buffer_f32)
+				var _z = buffer_read(_buffer, buffer_f32)
+				var _x_origin = buffer_read(_buffer, buffer_f32)
+				var _y_origin = buffer_read(_buffer, buffer_f32)
+				var _x_offset = buffer_read(_buffer, buffer_f32)
+				var _y_offset = buffer_read(_buffer, buffer_f32)
+				var _x_scale = buffer_read(_buffer, buffer_f32)
+				var _y_scale = buffer_read(_buffer, buffer_f32)
+				var _angle = buffer_read(_buffer, buffer_f32)
+				var _layer = buffer_read(_buffer, buffer_u32)
+				var _body = buffer_read(_buffer, buffer_bool)
+				var _projectile = buffer_read(_buffer, buffer_bool)
+				var _vision = buffer_read(_buffer, buffer_bool)
+				var _tag = buffer_read(_buffer, buffer_u32)
+				var _special = buffer_read_dynamic(_buffer)
+				
+				var _points = []
+				var i = 0
+				var n = buffer_read(_buffer, buffer_u32)
+				
+				repeat n {
+					var _px = buffer_read(_buffer, buffer_f32)
+					var _py = buffer_read(_buffer, buffer_f32)
+					
+					array_push(_points, [_px, _py])
+				}
+				
+				with add_polygon(_def, _points) {
+					z = _z
+				}
+			}
 			
 #endregion
 			
@@ -92,13 +129,12 @@ function level_load(_filename) {
 					angle = buffer_read(_buffer, buffer_f32)
 				}
 				
-				array_push(markers, _marker)
+				add(_marker)
 			}
 			
 #endregion
 			
 #region Things
-			
 			var _n_things = buffer_read(_buffer, buffer_u32)
 			
 			repeat _n_things {
@@ -121,7 +157,7 @@ function level_load(_filename) {
 					special = buffer_read_dynamic(_buffer)
 				}
 				
-				array_push(markers, _marker)
+				add(_marker)
 			}
 			
 #endregion

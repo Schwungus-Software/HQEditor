@@ -11,6 +11,7 @@ function PropMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor {
 	x_scale = 1
 	y_scale = 1
 	angle = 0
+	layer = 0
 	
 	static update_bbox = function () {
 		var _x1, _y1, _x2, _y2

@@ -11,10 +11,10 @@
     {"name":"Display","order":7,"path":"folders/Scripts/Display.yy",},
     {"name":"Level","order":8,"path":"folders/Scripts/Level.yy",},
     {"name":"Markers","order":1,"path":"folders/Scripts/Level/Markers.yy",},
+    {"name":"Math","order":16,"path":"folders/Scripts/Math.yy",},
     {"name":"Windows","order":1,"path":"folders/Scripts/Windows.yy",},
     {"name":"Items","order":3,"path":"folders/Scripts/Windows/Items.yy",},
     {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
-    {"name":"Math","order":16,"path":"folders/Scripts/Math.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"reload_assets","order":2,"path":"scripts/reload_assets/reload_assets.yy",},

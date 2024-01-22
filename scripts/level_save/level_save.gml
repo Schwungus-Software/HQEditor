@@ -49,7 +49,57 @@ function level_save(_filename) {
 			}
 
 #region Polygons
-			buffer_write(_buffer, buffer_u32, 0)
+			n = array_length(_polygons)
+			buffer_write(_buffer, buffer_u32, n)
+			i = 0
+		
+			repeat n {
+				var _polygon = _polygons[i]
+			
+				with _polygon {
+					with def {
+						buffer_write(_buffer, buffer_string, name)
+						
+						if material != undefined {
+							buffer_write(_buffer, buffer_string, material.name)
+						} else {
+							buffer_write(_buffer, buffer_string, "")
+						}
+					}
+					
+					buffer_write(_buffer, buffer_f32, x)
+					buffer_write(_buffer, buffer_f32, y)
+					buffer_write(_buffer, buffer_f32, z)
+					buffer_write(_buffer, buffer_f32, x_origin)
+					buffer_write(_buffer, buffer_f32, y_origin)
+					buffer_write(_buffer, buffer_f32, x_offset)
+					buffer_write(_buffer, buffer_f32, y_offset)
+					buffer_write(_buffer, buffer_f32, x_scale)
+					buffer_write(_buffer, buffer_f32, y_scale)
+					buffer_write(_buffer, buffer_f32, angle)
+					buffer_write(_buffer, buffer_u32, layer)
+					buffer_write(_buffer, buffer_bool, body)
+					buffer_write(_buffer, buffer_bool, projectile)
+					buffer_write(_buffer, buffer_bool, vision)
+					buffer_write(_buffer, buffer_u32, tag)
+					buffer_write_dynamic(_buffer, special)
+					
+					var n2 = array_length(children)
+					
+					buffer_write(_buffer, buffer_u32, n2)
+					
+					var j = 0
+					
+					repeat n2 {
+						with children[j++] {
+							buffer_write(_buffer, buffer_f32, x)
+							buffer_write(_buffer, buffer_f32, y)
+						}
+					}
+				}
+			
+				++i
+			}
 #endregion
 
 #region Lines
@@ -66,7 +116,7 @@ function level_save(_filename) {
 			
 				with _prop {
 					with def {
-						buffer_write(_buffer, buffer_string, def)
+						buffer_write(_buffer, buffer_string, name)
 						
 						if material != undefined {
 							buffer_write(_buffer, buffer_string, material.name)
@@ -82,6 +132,7 @@ function level_save(_filename) {
 					buffer_write(_buffer, buffer_f32, x_scale)
 					buffer_write(_buffer, buffer_f32, y_scale)
 					buffer_write(_buffer, buffer_f32, angle)
+					buffer_write(_buffer, buffer_u32, layer)
 				}
 			
 				++i
