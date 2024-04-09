@@ -167,7 +167,11 @@ function PolygonMarker(_def, _x, _y, _z) : Marker(_def, _x, _y, _z) constructor 
 			var _material = def.material
 			
 			if _material != undefined {
-				_image = _material.image
+				with _material {
+					if image != -1 {
+						_image = image.sprite
+					}
+				}
 			}
 		}
 		
