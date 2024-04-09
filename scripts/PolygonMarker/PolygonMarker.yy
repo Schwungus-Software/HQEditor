@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "PolygonMarker",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Markers",
-    "path": "folders/Scripts/Level/Markers.yy",
+  "$GMScript":"",
+  "%Name":"PolygonMarker",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"PolygonMarker",
+  "parent":{
+    "name":"Markers",
+    "path":"folders/Scripts/Level/Markers.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

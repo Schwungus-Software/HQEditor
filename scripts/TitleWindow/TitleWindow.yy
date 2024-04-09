@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "TitleWindow",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Windows",
-    "path": "folders/Scripts/Windows.yy",
+  "$GMScript":"",
+  "%Name":"TitleWindow",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TitleWindow",
+  "parent":{
+    "name":"Windows",
+    "path":"folders/Scripts/Windows.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

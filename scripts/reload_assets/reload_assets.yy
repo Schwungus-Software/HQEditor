@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "reload_assets",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Assets",
-    "path": "folders/Scripts/Assets.yy",
+  "$GMScript":"",
+  "%Name":"reload_assets",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"reload_assets",
+  "parent":{
+    "name":"Assets",
+    "path":"folders/Scripts/Assets.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

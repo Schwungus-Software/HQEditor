@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "level_load",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Level",
-    "path": "folders/Scripts/Level.yy",
+  "$GMScript":"",
+  "%Name":"level_load",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"level_load",
+  "parent":{
+    "name":"Level",
+    "path":"folders/Scripts/Level.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

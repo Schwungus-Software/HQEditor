@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "ImageItem",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Items",
-    "path": "folders/Scripts/Windows/Items.yy",
+  "$GMScript":"",
+  "%Name":"ImageItem",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ImageItem",
+  "parent":{
+    "name":"Items",
+    "path":"folders/Scripts/Windows/Items.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

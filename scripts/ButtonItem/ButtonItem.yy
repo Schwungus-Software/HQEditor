@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "ButtonItem",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Items",
-    "path": "folders/Scripts/Windows/Items.yy",
+  "$GMScript":"",
+  "%Name":"ButtonItem",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ButtonItem",
+  "parent":{
+    "name":"Items",
+    "path":"folders/Scripts/Windows/Items.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

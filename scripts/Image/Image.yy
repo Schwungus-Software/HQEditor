@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Image",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Asset Types",
-    "path": "folders/Scripts/Assets/Asset Types.yy",
+  "$GMScript":"",
+  "%Name":"Image",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Image",
+  "parent":{
+    "name":"Asset Types",
+    "path":"folders/Scripts/Assets/Asset Types.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
