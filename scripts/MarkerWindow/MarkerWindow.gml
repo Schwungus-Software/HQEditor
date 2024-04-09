@@ -2,7 +2,10 @@ function MarkerWindow(_x, _y, _marker) : Window(_x, _y) constructor {
 	width = 136
 	
 	marker = _marker
-	add_item(new TextItem(8, 8, marker.def.name))
+	
+	var _def = _marker.def
+	
+	add_item(new TextItem(8, 8, _def == undefined ? instanceof(_marker) : _def.name))
 	
 	if is_instanceof(_marker, ThingMarker) {
 		height = 157
